@@ -3,6 +3,7 @@
 ; Constants
 (defvar *precision* 10000000.0)
 (defvar *dx* (/ 1.0 *precision*))
+(defvar *integral-precision* (/ *precision* 100.0))
 
 
 ; Functions
