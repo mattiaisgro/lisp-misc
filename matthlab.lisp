@@ -1,9 +1,9 @@
 
 
 ; Constants
-(defvar *precision* 10000000.0)
-(defvar *dx* (/ 1.0 *precision*))
-(defvar *integral-precision* (/ *precision* 100.0))
+(defparameter *precision* 10000.0)
+(defparameter *dx* 0.00001)
+(defparameter *integral-precision* 1000.0)
 
 
 ; Functions
@@ -12,7 +12,7 @@
 
 (defun cube (x) (* x x x))
 
-; Calculate x^y (y must be natural, use fpow for decimals)
+; Calculate x^y (y must be natural)
 (defun pow (x y)
 	(defun pow-iter (res x y counter)
 		(if (= counter y)
@@ -48,6 +48,6 @@
 
 	(lambda (a b)
 		(*
-			(/ (- b a) *integral-precision*)
+			(/ (/ (- b a) 3.0) *integral-precision*)
 			(integ-simpson f a b (/ *precision* 100.0) 0.0))))
 
