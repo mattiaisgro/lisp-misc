@@ -1,9 +1,8 @@
 
 
 ; Constants
-(defvar *precision* 100000)
+(defvar *precision* 10000000.0)
 (defvar *dx* (/ 1.0 *precision*))
-
 
 
 ; Functions
@@ -37,6 +36,17 @@
 			*dx*)))
 
 ; Return a function that approximates the integral of f(x)
-; ; (defun integrate-f (f)
-; ; 	(lambda (x) (f x)))
+; Using Simpson approximation
+(defun integrate-f (f)
+	(defun integ-simpson (f a b k res)
+		(if (= k *integral-precision*)
+			res
+			(+ res
+				(funcall f (+ a (* k (/ (- b a) *integral-precision*))))
+			)))
+
+	(lambda (a b)
+		(*
+			(/ (- b a) *integral-precision*)
+			(integ-simpson f a b (/ *precision* 100.0) 0.0))))
 
