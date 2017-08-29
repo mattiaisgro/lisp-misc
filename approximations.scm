@@ -3,18 +3,19 @@
 
 ;;; PI
 
-;;; Approximate PI using Madhava-Leibniz serie
+;;; Approximate PI using Ramanujan serie
 (define (approx-pi-ramanujan n)
-	(define (ramanujan-serie n counter res)
-		(if (= n counter)
+	(define (ramanujan-serie n k res)
+		(if (= n k)
 			res
-			(ramanujan-serie n (1+ counter)
+			(ramanujan-serie n (1+ k)
 				(+ res
-					())))
+					(/ 	(* (factorial (* 4 k)) (+ 1103 (* 26390 k)))
+						(* (expt (factorial k) 4) (expt 396 (* 4 k)))))))
 	)
 
-	(* 	(* 2 (sqrt 3))
-		(ramanujan-serie n 0 0))
+	(/ 1.0 (* 	(/ (* 2 (sqrt 2)) 9801.0)
+		(ramanujan-serie n 0 0)))
 )
 
 ;;; Approximate PI using Vega formula (PI / 4 = 5 * arctan(1 / 5) - arctan(1 / 239))

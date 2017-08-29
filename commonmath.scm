@@ -72,7 +72,7 @@
 ;;; Calculate the factorial of (x)
 (define (factorial x)
 	(define (factorial-iter x res)
-		(if (= x 1)
+		(if (or (= x 1) (zero? x))
 			res
 			(factorial-iter (1- x)
 							(* res x)))
