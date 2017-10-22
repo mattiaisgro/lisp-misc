@@ -1,6 +1,4 @@
 
-(load "language.scheme")
-
 ;;; Basic math functions
 
 
@@ -10,7 +8,7 @@
 ;;; Return the cube of (x)
 (define (cube x) (* x x x))
 
-;;; Check if
+;;; Check if x is divisible by y
 (define (divides-by? x y)
 	(if (= (mod x y) 0)
 		#t
@@ -49,9 +47,25 @@
 			(serie-sum f (f-next a) f-next b)))
 )
 
+;;; Sum all numbers in a list
+(define (sum-all l)
+	(define (sum-all-iter l res counter)
+		(if (null? (cdr l))
+			(+ res (car l))
+			(sum-all-iter (cdr l) (+ res (car l)) (1+ counter)))
+	)
+
+	(sum-all-iter l 0.0 0)
+)
+
 ;;; Calculate the average of two numbers
 (define (average x y)
 	(/ (+ x y) 2.0)
+)
+
+;;; Calculate the average of a list of numbers
+(define (average-list l)
+	(/ (sum-all l) (list-lenght l))
 )
 
 ;;; Calculate the weighed average of two numbers

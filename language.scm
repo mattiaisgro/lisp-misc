@@ -9,7 +9,7 @@
 (define (list-lenght l)
 	(define (list-lenght-iter l counter)
 		(if (null? (cdr l))
-			counter
+			(1+ counter)
 			(list-lenght-iter (cdr l) (1+ counter)))
 	)
 

@@ -1,12 +1,10 @@
 
-(load "commonmath.scheme")
-
 (define dx 0.0001)
 (define integral-precision 1000.0)
 
 ;;; Calculus approximations and other math functions
 
-;;; Return a function that approximates f'(x)
+;;; Return a function that approximates  the derivative of f(x)
 (define (derive-f f)
 	(lambda (x)
 		(/	(abs (- (f (+ x *dx*)) (f x)))
